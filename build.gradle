@@ -1,3 +1,103 @@
+//1차 driver와 연결 실패
+// plugins {
+//    id 'java'
+//    id 'org.springframework.boot' version '3.3.0'
+//    id 'io.spring.dependency-management' version '1.1.5'
+//}
+//
+//group = 'org.example'
+//version = '0.0.1-SNAPSHOT'
+//
+//java {
+//    sourceCompatibility = '17'
+//}
+//
+//configurations {
+//    compileOnly {
+//        extendsFrom annotationProcessor
+//    }
+//}
+//
+//repositories {
+//    mavenCentral()
+//}
+//
+//dependencies {
+////    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+////    implementation 'org.springframework.boot:spring-boot-starter-web'
+////    implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // Added JPA starter
+////    compileOnly 'org.projectlombok:lombok'
+////    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+////    runtimeOnly 'com.h2database:h2'
+//////    runtimeOnly 'com.mysql:mysql-connector-j'
+////    // MySQL JDBC driver
+////    implementation 'mysql:mysql-connector-java:8.0.32'
+////    annotationProcessor 'org.projectlombok:lombok'
+////    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+////    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+////    // For testing
+////    testImplementation 'mysql:mysql-connector-java:8.0.32'
+//    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+//    implementation 'org.springframework.boot:spring-boot-starter-web'
+//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//    compileOnly 'org.projectlombok:lombok'
+//    annotationProcessor 'org.projectlombok:lombok'
+//    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+//    runtimeOnly 'com.h2database:h2'
+//    implementation 'mysql:mysql-connector-java:8.0.32'
+//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+//    testImplementation 'mysql:mysql-connector-java:8.0.32'
+//
+//}
+//
+//tasks.named('test') {
+//    useJUnitPlatform()
+//}
+
+//2차 mysql연결
+//plugins {
+//    id 'java'
+//    id 'org.springframework.boot' version '3.3.0'
+//    id 'io.spring.dependency-management' version '1.1.5'
+//}
+//
+//group = 'org.example'
+//version = '0.0.1-SNAPSHOT'
+//
+//java {
+//    sourceCompatibility = '17'
+//}
+//
+//configurations {
+//    compileOnly {
+//        extendsFrom annotationProcessor
+//    }
+//}
+//
+//repositories {
+//    mavenCentral()
+//}
+//
+//dependencies {
+//    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+//    implementation 'org.springframework.boot:spring-boot-starter-web'
+//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//    compileOnly 'org.projectlombok:lombok'
+//    annotationProcessor 'org.projectlombok:lombok'
+//    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+//    runtimeOnly 'com.h2database:h2'
+//    implementation 'mysql:mysql-connector-java:8.0.32'
+//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+//    testImplementation 'mysql:mysql-connector-java:8.0.32'
+//}
+//
+//tasks.named('test') {
+//    useJUnitPlatform()
+//}
+
+//3차
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.0'
@@ -24,13 +124,21 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    runtimeOnly 'com.h2database:h2'
+    implementation 'mysql:mysql-connector-java:8.0.32'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'mysql:mysql-connector-java:8.0.32'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+bootRun {
+    jvmArgs = ['-Xshare:off']
 }

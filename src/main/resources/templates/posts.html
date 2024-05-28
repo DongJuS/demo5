@@ -4,6 +4,12 @@
     <title>Posts</title>
 </head>
 <body>
+    <h1>Board : {boardName}</h1>
+    <ul>
+        <li><a href="/articles/{articleId}">Article Title 1 </a></li>
+        <li><a href="/articles/{articleId}">Article Title 2 </a></li>
+    </ul>
+
 <h1 th:text="${board.boardNm}">Board Name</h1>
 <ul>
     <li th:each="article : ${articles}">

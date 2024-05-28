@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Repository
 public class ArticleRepositoryImpl implements ArticleRepository {
@@ -34,5 +35,12 @@ public class ArticleRepositoryImpl implements ArticleRepository {
     @Override
     public void deleteById(String id) {
         articles.remove(id);
+    }
+
+    @Override
+    public List<Article> findByBoardId(String boardId) {
+        return articles.values().stream()
+                .filter(article -> boardId.equals(article.getBoardId()))
+                .collect(Collectors.toList());
     }
 }

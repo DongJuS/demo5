@@ -1,6 +1,5 @@
 package org.example.demo5;
 
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,36 +8,18 @@ import java.util.List;
 @Service
 public class ArticleService {
     private final ArticleRepository repository;
+    private final BoardRepository boardRepository;  // 새 리포지토리 추가
 
     @Autowired
-    public ArticleService(ArticleRepository repository) {
+    public ArticleService(ArticleRepository repository, BoardRepository boardRepository) {
         this.repository = repository;
-    }
-    @PostConstruct
-    public void initData() {
-        Article article1 = new Article();
-        article1.setId("1");
-        article1.setWriterId("1");
-        article1.setBoardId("1");
-        article1.setTitle("제목1");
-        article1.setSubject("내용1");
-        article1.setDate("2024-05-14");
-
-        Article article2 = new Article();
-        article2.setId("2");
-        article1.setWriterId("2");
-        article2.setBoardId("1");
-        article2.setTitle("제목2");
-        article2.setSubject("내용2");
-        article2.setDate("2024-05-15");
-
-        repository.save(article1);
-        repository.save(article2);
+        this.boardRepository = boardRepository;
     }
 
     public List<Article> findAll() {
         return repository.findAll();
     }
+
 
     public Article findById(String id) {
         return repository.findById(id);
@@ -54,5 +35,11 @@ public class ArticleService {
 
     public void deleteById(String id) {
         repository.deleteById(id);
+    }
+    public List<Article> findByBoardId(String boardId) {
+        return repository.findByBoardId(boardId);
+    }
+    public Board findBoardById(String boardId) {
+        return boardRepository.findById(boardId);
     }
 }
